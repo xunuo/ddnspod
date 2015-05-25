@@ -1,0 +1,27 @@
+{
+  "name": "ddnspod",
+  "version": "1.0.0",
+  "description": "A DDNS Client by DPSPOD API.",
+  "author": "xunuo <i@xunuo.com>",
+  "license": "MIT",
+  "keywords": [
+    "ddns",
+    "dnspod",
+    "update",
+    "ip",
+    "api",
+    "node"
+  ],
+  "repository": "xunuo/ddnspod",
+  "bin": {
+    "ddnspod": "./cli.js"
+  },
+  "dependencies": {
+    "ip": "^0.3.2",
+  	"dnspod-api": "^1.0.4"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+  }
+}
