@@ -67,7 +67,7 @@ var ddnspod = function(config){
                         params : {
                             domain : config.domain,
                             sub_domain : config.subDomain,
-                            value : config.ip,
+                            value : config.ip, 
                             record_type : config.type,
                             record_line : config.line,
                             ttl : config.ttl
