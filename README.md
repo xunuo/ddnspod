@@ -56,4 +56,4 @@ dnsUpdate();
 setInterval(dnsUpdate ,5 * 1000)
 ```
 
-> You can use PM2 for continuously updating.
+> You can use PM2 for continuously updating. 
