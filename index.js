@@ -114,7 +114,7 @@ var ddnspod = function(config){
                 console.log('error: ', error);
             }
         )
-    } // end doActions
+    } // end doActions 
     
     
     if(config.ip){
