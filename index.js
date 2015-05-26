@@ -3,7 +3,7 @@ var nodeIP = require('ip'),
     DnspodApi = require('dnspod-api')
     ;
 
-var ddnspod = function(config){
+var ddnspod = function(config){ 
     
     var dnsApiConfig = {
         server : config.server, // dnspod.com (default) | dnspod.cn
