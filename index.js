@@ -1,9 +1,13 @@
 var nodeIP = require('ip'),
     net = require('net'),
+    Q = require('q'),
     DnspodApi = require('dnspod-api')
     ;
 
 var ddnspod = function(config){ 
+
+    // prepare promise callback
+    var deferred = Q.defer();
     
     var dnsApiConfig = {
         server : config.server, // dnspod.com (default) | dnspod.cn
@@ -34,7 +38,7 @@ var ddnspod = function(config){
             config.line = '默认';
         }
     }
-
+    
     // new dnspodApi instance
     var dnspodApi =  new DnspodApi(dnsApiConfig);
     
@@ -94,24 +98,26 @@ var ddnspod = function(config){
                     });
     
                 }else{
-                    
-                    console.log('api error: ', recordListData.status.message);
-                    
+                    console.log('Dnspod API Error: ', recordListData.status.message);
+                    deferred.reject(recordListData.status);
                 }
         
             }
         )
         .then(
-            function(callback){
-                if(callback.status.code == '1') {
+            function(setRecordData){
+                if(setRecordData.status.code == '1') {
                     console.log(recordOperateType, 'A record:', config.subDomain + '.' + config.domain, '»', config.ip);
+                    deferred.resolve(setRecordData.status);
                 }else{
-                    console.log(callback.status.message);
+                    console.log(setRecordData.status.message);
+                    deferred.reject(setRecordData.status);
                 }
             },
             // error
             function(error) {
                 console.log('error: ', error);
+                deferred.reject(error);
             }
         )
     } // end doActions 
@@ -141,11 +147,14 @@ var ddnspod = function(config){
                 doActions();
             }).on('error', function (error) {
                 console.log(error);
+                deferred.reject(error);
             });
             
         }
         
     }
+    
+    return deferred.promise;
     
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "ddnspod",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A DDNS Client by DPSPOD API.",
   "author": "xunuo <i@xunuo.com>",
   "license": "MIT",
@@ -17,11 +17,10 @@
     "ddnspod": "./cli.js"
   },
   "dependencies": {
+    "dnspod-api": "^1.0.4",
     "ip": "^0.3.2",
-  	"dnspod-api": "^1.0.4"
+    "q": "^1.4.1"
   },
-  "devDependencies": {
-  },
-  "scripts": {
-  }
+  "devDependencies": {},
+  "scripts": {}
 }

@@ -46,6 +46,12 @@ var dnsUpdate = function(){
         subDomain : 'test' // which subdomain do you want to set. default : @
         // localIp : true, // use local IP instead of internet IP.
         // ip : '127.0.0.1' // specific the IP
+        
+    // callback with promise
+    }).then(function(res){
+        console.log(res);
+    },function(error){
+        console.log(error);
     });
 };
 
