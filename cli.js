@@ -13,6 +13,7 @@ argv
   .option('-b, --subDomain [domain]', 'your subdomain, default : @')
   .option('-l, --localIp [localIp]', 'use local IP instead of internet IP. (true/false)')
   .option('-i, --ip [ip]', 'if you want specific the IP.')
+  .option('--ttl [ttl]', 'set ttl time.')
   .parse(process.argv);
 
 
@@ -23,5 +24,6 @@ ddnspod({
     domain : argv.domainName, // your domain
     subDomain : argv.subDomain, // your subdomain, default : @
     localIp : argv.localIp, // use local IP instead of internet IP.
-    ip : argv.ip // specific the IP
+    ip : argv.ip, // specific the IP
+    ttl : argv.ttl // set ttl time
 });

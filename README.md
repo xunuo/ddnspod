@@ -26,7 +26,7 @@ npm install ddnspod -g
 Run ddnspod as a command line tool. It will update your dns record after you execute the following.
 
 ```
-ddnspod --server 'dnspod.cn' --token 'xxxxx,xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' --domainName 'your-domain.com' --subDomain 'test' [--localIp true] [--ip '127.0.0.1']
+ddnspod --server 'dnspod.cn' --token 'xxxxx,xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' --domainName 'your-domain.com' --subDomain 'test' [--localIp true] [--ip '127.0.0.1'] [--ttl 600]
 ```
 
 > You can add it to crontab for continuously updating.
@@ -45,7 +45,8 @@ var dnsUpdate = function(){
         domain : 'your-domain.com', // your domain
         subDomain : 'test' // which subdomain do you want to set. default : @
         // localIp : true, // use local IP instead of internet IP.
-        // ip : '127.0.0.1' // specific the IP
+        // ip : '127.0.0.1', // specific the IP
+        // ttl : '600' // specific ttl time
         
     // callback with promise
     }).then(function(res){
