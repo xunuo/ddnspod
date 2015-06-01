@@ -99,7 +99,7 @@ var ddnspod = function(config){
     
                 }else{
                     console.log('Dnspod API Error: ', recordListData.status.message);
-                    deferred.reject(recordListData.status);
+                    deferred.reject(recordListData);
                 }
         
             }
@@ -108,10 +108,10 @@ var ddnspod = function(config){
             function(setRecordData){
                 if(setRecordData.status.code == '1') {
                     console.log(recordOperateType, 'A record:', config.subDomain + '.' + config.domain, '»', config.ip);
-                    deferred.resolve(setRecordData.status);
+                    deferred.resolve(setRecordData);
                 }else{
                     console.log(setRecordData.status.message);
-                    deferred.reject(setRecordData.status);
+                    deferred.reject(setRecordData);
                 }
             },
             // error
