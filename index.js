@@ -1,6 +1,7 @@
 var nodeIP = require('ip'),
     net = require('net'),
     Q = require('q'),
+    request = require('request'),
     DnspodApi = require('dnspod-api')
     ;
 
@@ -135,19 +136,16 @@ var ddnspod = function(config){
             
         }else{
             
-            // Get internet host ip.
-            client = net.connect({
-                host: 'ns1.dnspod.net',
-                port: 6666
-            }, function () {
-            }).on('data', function (data) {
-                config.ip = data.toString();
-                client.end();
-            }).on('end', function () {
-                doActions();
-            }).on('error', function (error) {
-                console.log(error);
-                deferred.reject(error);
+            // use ipinfo.io
+            request({url:'http://ipinfo.io',json:true}, function (error, response, body) {
+                
+                if (!error && response.statusCode == 200) {
+                    config.ip = body.ip;
+                    doActions();
+                }else{
+                    deferred.reject(error);
+                }
+                
             });
             
         }
